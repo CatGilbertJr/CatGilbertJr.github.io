@@ -1,18 +1,7 @@
 # Cat Gilbert's Website
 
-This is my website. I'm working on the technology.
-
 [TOC]
 
-## hello
+## Predictions
 
-This is the hello section.
-
-### First link
-
-This is [first link](first_link.html)
-
-## world
-
-This is the world section.
-
+<iframe src="https://www.metaculus.com/questions/embed/13171/" width="550" height="260"></iframe>
