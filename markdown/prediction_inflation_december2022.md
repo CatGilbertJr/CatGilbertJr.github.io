@@ -10,5 +10,5 @@ Basically, when will the blue line in the chart below fall below the red line?
 
 I have never tried to forecast inflation before. So I am going to start with the dumbest possible guess, which would be to just draw a linear trend with the FRED data. This would lead us to hit the 3% threshold by late-2023.
 
-![prediction_inflation_december2022_linear_trend](C:\Users\ashas\CatGilbertJr.github.io\figures\prediction_inflation_december2022_linear_trend.png)
+![prediction_inflation_december2022_linear_trend](https://raw.githubusercontent.com/CatGilbertJr/CatGilbertJr.github.io/main/figures/prediction_inflation_december2022_linear_trend.png)
 
