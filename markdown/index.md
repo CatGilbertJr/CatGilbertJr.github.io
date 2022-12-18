@@ -4,4 +4,5 @@
 
 ## Predictions
 
-<iframe src="https://www.metaculus.com/questions/embed/13171/" width="550" height="260"></iframe>
+* **December 2022**  [When will inflation fall below 3 percent?](prediction_inflation_december2022)
+
