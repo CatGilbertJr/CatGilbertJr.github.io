@@ -4,11 +4,11 @@
 
 ## Metaculus question
 
-Here is the Metaculus question:
+This write-up was based on an earlier version of this question:
 
 <iframe src="https://www.metaculus.com/questions/embed/14030/" width="550" height="260"></iframe>
 
-Basically, the question is asking whether Russia or Belarus will send thousands of troops into Northern Ukraine within 6-months. Northern Ukraine is defined as the six northern oblasts (see red section of map below).
+However, after I wrote this, the question completely changed. Previously, the question was asking whether Russia or Belarus would send thousands of troops into Northern Ukraine within 6-months. Northern Ukraine was defined as the six northern oblasts (see red section of map below). So this write-up focuses on that question.
 
 ![](https://github.com/CatGilbertJr/CatGilbertJr.github.io/blob/main/figures/prediction_new_ukraine_invasion_december2022_map.png?raw=true)
 
