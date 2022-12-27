@@ -6,7 +6,7 @@ library(scales)
 # 0. Parameters
 #------------------------------------------------------------------------------
 
-selected_region <- "United States of America" 
+selected_region <- "Africa" 
 load_datasets <- FALSE
 hold_tfr_constant <- FALSE
 hold_mrt_constant <- FALSE
@@ -176,13 +176,13 @@ ggplot(data=table1, aes(x=year,y=my_change,group=vers)) +
   scale_y_continuous(label=comma)
 
 #------------------------------------------------------------------------------
-# Figure 2. 1990 to 2030
+# Figure 2. 1989 to 2030
 #------------------------------------------------------------------------------
 
 pop1980 <- calc_pop(s.popAge1dt,1980)
 pop2000 <- calc_pop(s.popAge1dt,2000)
 table2 <- rbind(table_summarizer(s.popAge1dt,"Hist",pop1980,1981,2021),
-                table_summarizer(myProjection,"Proj",pop1980,2022,2030))
+                table_summarizer(s.popprojAge1dt,"Proj",pop1980,2022,2030))
 ggplot(data=table2, aes(x=as.numeric(year),y=my_change)) +
   geom_line() + theme_classic() +
   ggtitle("Africa Population - 1981 to 2030") +
@@ -210,7 +210,7 @@ table4 <- rbind(table_summarizer(myProjection,"ME",pop2021,2022,2100),
                 table_summarizer(s.popprojAge1dt,"UN",pop2021,2022,2100))
 ggplot(data=table4, aes(x=as.numeric(year),y=tot_pop,group=vers)) +
   geom_line(aes(color=vers)) + theme_classic() +
-  ggtitle("Africa Population - Comparing my projection the UN") +
+  ggtitle("United States Population - Comparing my projection the UN") +
   xlab("") + ylab("Total population, in thousands") +
   scale_y_continuous(label=comma) + 
   scale_x_continuous(breaks = seq(2022,2100, by = 10))
