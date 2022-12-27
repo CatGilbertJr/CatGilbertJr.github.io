@@ -8,8 +8,8 @@ library(scales)
 
 selected_region <- "Africa" 
 load_datasets <- FALSE
-hold_tfr_constant <- TRUE
-hold_mrt_constant <- TRUE
+hold_tfr_constant <- FALSE
+hold_mrt_constant <- FALSE
 max_year <- 2100
  
 #------------------------------------------------------------------------------
@@ -20,6 +20,7 @@ max_year <- 2100
 if (load_datasets) {
   load(file='wpp2022/data/countries.rda')
   load(file='wpp2022/data/popAge1dt.rda')
+  load(file='wpp2022/data/tfr1dt.rda')
   load(file='wpp2022/data/tfrproj1dt.rda')
   load(file='wpp2022/data/popprojAge1dt.rda')
   load(file='wpp2022/data/percentASFR1dt.rda')
@@ -48,12 +49,14 @@ filter_trim <- function(data,varlist) {
 }
 
 s.popAge1dt      <- filter_trim(popAge1dt,      c("year","age","popM","popF"))
+s.tfr1dt         <- filter_trim(tfr1dt,         c("year","tfr"))
 s.tfrproj1dt     <- filter_trim(tfrproj1dt,     c("year","tfr"))
 s.percentASFR1dt <- filter_trim(percentASFR1dt, c("year","age","pasfr"))
 s.mx1dt          <- filter_trim(mx1dt,          c("year","age","mxM","mxF"))
 s.migration1dt   <- filter_trim(migration1dt,   c("year","mig"))
 s.sexRatio1dt    <- filter_trim(sexRatio1dt,    c("year","srb"))
 s.popprojAge1dt  <- filter_trim(popprojAge1dt,  c("year","age","popM","popF"))
+
 
 #------------------------------------------------------------------------------
 # 4. FUNCTION: Births simulator
@@ -187,6 +190,32 @@ ggplot(data=table2, aes(x=as.numeric(year),y=my_change)) +
   scale_y_continuous(label=comma) + theme(legend.position="none")
 
 #------------------------------------------------------------------------------
+# Figure 3. Change in TFR
+#------------------------------------------------------------------------------
+
+table3 <- rbind(s.tfr1dt,s.tfrproj1dt) %>%
+  filter(year>=1980) %>%
+  filter(year<=2030)
+ggplot(data=table3, aes(x=as.numeric(year),y=tfr)) +
+  geom_line() + theme_classic() +
+  ggtitle("Africa Fertility, 1980 to 2030") +
+  xlab("") + ylab("Total Fertility Rate") +
+  scale_y_continuous(label=comma) + theme(legend.position="none")
+
+#------------------------------------------------------------------------------
+# Figure 4. Africa to 2100
+#------------------------------------------------------------------------------
+
+table4 <- rbind(table_summarizer(myProjection,"ME",pop2021,2022,2100),
+                table_summarizer(s.popprojAge1dt,"UN",pop2021,2022,2100))
+ggplot(data=table4, aes(x=as.numeric(year),y=tot_pop,group=vers)) +
+  geom_line(aes(color=vers)) + theme_classic() +
+  ggtitle("Africa Population - Comparing my projection the UN") +
+  xlab("") + ylab("Total population, in thousands") +
+  scale_y_continuous(label=comma) + 
+  scale_x_continuous(breaks = seq(2022,2100, by = 10))
+
+#------------------------------------------------------------------------------
 # Report population in 2030
 #------------------------------------------------------------------------------
 
@@ -194,3 +223,4 @@ filter(myProjection,year==2030) %>%
   mutate(pop=popM+popF) %>%
   select(pop) %>%
   sum()
+
