@@ -6,7 +6,7 @@ library(scales)
 # 0. Parameters
 #------------------------------------------------------------------------------
 
-selected_region <- "Africa" 
+selected_region <- "United States of America" 
 load_datasets <- FALSE
 hold_tfr_constant <- FALSE
 hold_mrt_constant <- FALSE
